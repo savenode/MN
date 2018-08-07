@@ -6,7 +6,9 @@ Setting up your VPS:
 There are many hosting services available online that will allow you to create a VPS. We use Vultr.com and their $5 a month VPS running 1 CPU core, 1GB RAM and Ubuntu 16.04.
 First you will need to create your VPS and make a note of the IP address of the machine.
 On your VPS go to the home directory and type:
+
 wget -q https://raw.githubusercontent.com/savenode/MN/master/sndinstall.sh
+
 Then type: chmod +x sndinstall.sh
 Followed by running the install script: ./sndinstall.sh
 Let this run, and when prompted for a masternode key, or press enter to generate one, press enter.
