@@ -30,7 +30,7 @@ On your local machine, download the wallet for your operating system here:
 https://github.com/savenode/SaveNodeCore/releases/tag/V1.2.1
 
 Once the wallet is installed you will need to ensure you have your 2000 SNO collateral for your MN.
-An easy way to do this is to go to Receive on your wallet, for label type in MN1 or the chosen name for your masternode, 1000 in the amount and click request payment.
+An easy way to do this is to go to Receive on your wallet, for label type in MN1 or the chosen name for your masternode, 2000 in the amount and click request payment.
 Copy the receiving address in the dialog box.
 Now, go to the Send tab in your wallet and paste this address, which should then automatically populate the label as MN1 or your chosen label.
 
