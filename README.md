@@ -27,7 +27,7 @@ Do not close your terminal/ command prompt window at this point, just so you can
 Now on to the local wallet.
 Configuring Local Wallet:
 On your local machine, download the wallet for your operating system here:
-https://github.com/savenode/SaveNodeCore/releases/tag/V1.2.1
+https://github.com/savenode/SaveNodeCore/releases/tag/V2.0
 
 Once the wallet is installed you will need to ensure you have your 2000 SNO collateral for your MN.
 An easy way to do this is to go to Receive on your wallet, for label type in MN1 or the chosen name for your masternode, 2000 in the amount and click request payment.
