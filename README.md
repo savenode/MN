@@ -1,48 +1,77 @@
-SaveNode Masternode Setup Guide
+![Example-Logo](https://cdn.discordapp.com/attachments/446850284199739393/484106510729871371/guide_banner.png)
 
-This guide is for a single masternode setup on Ubuntu 16.04 64bit server (VPS), controlled from your local computer / SaveNode wallet.
-You will need:
+# Savenode Masternode Setup Guide (Ubuntu 16.04)
+***
+## Required
+1) **2000 SNO coins**
+2) **Local Wallet https://github.com/savenode/SaveNodeCore/releases**
+3) **VPS with UBUNTU 16.04**
+4) **Putty https://www.putty.org/**
+5) **Text editor on your local pc to save data for copy/paste**
+***
 
-- 2000 SNO (check latest collateral)
-- Main computer to run your SaveNode wallet (this holds your 2000 SNO collateral)
-- Masternode Server (VPS – will be running 24/7)
-- A unique IP address for your VPS
+***On your Local Wallet***
+* Create an address with a label MN1 and send exactly 2000 SNO to it. Wait to complete 6 confirmations on “ Payment to yourself “ created.
 
-Setting up your VPS:
-There are many hosting services available online that will allow you to create a VPS. We use Vultr.com and their $5 a month VPS running 1 CPU core, 1GB RAM and Ubuntu 16.04.
-First you will need to create your VPS and make a note of the IP address of the machine.
-Using Putty On your VPS go to the home directory and type:
+* Open the Debug Console ( Tools – Debug Console ) and type ***masternode genkey***.
+You will then receive your private key, save it in a txt to use it later.
+  ```
+  Example:
+          masternode genkey
+          w8723KqiiqtiLH6y2ktjfwzuSrNucGAbagpmTmCn1KnNEeQTJKf
+* Still at Debug Console type ***masternode outputs*** and save txhash and outputidx on a txt
+  ```
+  Exemple:
+          "txhash" : "12fce79c1a5623aa5b5830abff1a9feb6a682b75ee9fe22c647725a3gef42saa",
+		         "outputidx" : 0
 
-wget -q https://raw.githubusercontent.com/savenode/MN/master/sndinstall.sh
+***On Putty***
 
-chmod +x sndinstall.sh
+* Once logged in your vps, *copy/past* each line one by one with *Enter*
 
-./sndinstall.sh
+	:arrow_forward: `wget -q https://raw.githubusercontent.com/savenode/MN/master/sndinstall.sh`
 
-Let this run, and when prompted for a masternode key, or press enter to generate one, press enter.
+	:arrow_forward: `chmod +x sndinstall.sh`
 
-This will take a couple of minutes to complete and then will present you with your masternode key.
-Do not close your terminal/ command prompt window at this point, just so you can keep your masternode key to hand.
+	:arrow_forward: `./sndinstall.sh`
 
-Now on to the local wallet.
-Configuring Local Wallet:
-On your local machine, download the wallet for your operating system here:
-https://github.com/savenode/SaveNodeCore/releases/tag/V2.0
+Let this run, and when prompted for a masternode key, copy the one you got previously (masternode genkey) and press enter.
 
-Once the wallet is installed you will need to ensure you have your 2000 SNO collateral for your MN.
-An easy way to do this is to go to Receive on your wallet, for label type in MN1 or the chosen name for your masternode, 2000 in the amount and click request payment.
-Copy the receiving address in the dialog box.
-Now, go to the Send tab in your wallet and paste this address, which should then automatically populate the label as MN1 or your chosen label.
+It will take a couple of minutes to complete and then will present you a similar board like this: 
 
-Once your transaction has over 20 confirmations, you should be able to get your masternode outputs.
-To do this go to Tools > Debug Console and type in masternode outputs.
-You should see something like: “txhash” : “334545645643534534324238908f36ff4456454dfffff51311”,
-“outputidx” : 0,
-Now you need to put all of this together in your masternode config file.
-Go to Tools > Open Masternode configuration file.
-In here, you need to put the details of your masternode on a new line (with no # as shown in the examples) as such:
-MN1 IP:29711 Masternode Key TXHASH Outputindex
-Paste the key from your VPS, and then the masternode output and output id you just generated from your wallet.
-Save the file, close it and then restart your wallet.
-Once the wallet has restarted and sync’d you can go to the masternode tab in the wallet, and you should see it there. Now, right click the masternode and click start missing.
-You have successfully setup your masternode.
+![Example-Logo](https://cdn.discordapp.com/attachments/451822135464427521/484158919430766612/3.JPG)
+
+Remember to do `savenode-cli getblockcount` to check if VPS sync with chain
+
+Do not close your terminal/ command prompt window at this point.
+
+***Go back to your Local Wallet***
+
+* Open the Masternode Configuration file (tools – open masternode configuration file) and add a new line (without #) using this template (bold needs to be changed) in the final save it and close the editor
+
+**ALIAS VPS_IP**:29711 **masternodeprivkey TXhash Output**
+
+		Example:
+		MN1 125.67.32.10:29711 w8723KqiiqtiLH6y2ktjfwzuSrNucGAbagpmTmCn1KnNEeQTJKf
+		12fce79c1a5623aa5b5830abff1a9feb6a682b75ee9fe22c647725a3gef42saa 0
+
+* Close and Re-open Local Wallet, and at Masternode Tab you will find your MN with status MISSING
+
+***(For the next steps you need to have already 21 confirmation on “Payment to yourself “ created in first step)***
+
+* At Masternode Tab choose the Masternode with the status MISSING and press “ Start Alias “.
+	(if you get an error, just move to next step)
+
+* Go to Debug Console type the following: ***startmasternode alias 0 (mymnalias)***
+
+		Example:
+		startmasternode alias 0 MN1
+***
+
+***Go back to Putty***
+
+   :arrow_forward: `./savenode-cli masternode status`
+
+You need to get **"status" : 4**
+
+## Congratulations your Savenode node it's running
