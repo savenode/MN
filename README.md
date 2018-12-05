@@ -3,7 +3,7 @@
 # Savenode Masternode Setup Guide (Ubuntu 16.04)
 ***
 ## Required
-1) **16000 SNO coins**
+1) **32000 SNO coins**
 2) **Local Wallet https://github.com/savenode/SaveNodeCore/releases**
 3) **VPS with UBUNTU 16.04**
 4) **Putty https://www.putty.org/**
