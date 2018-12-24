@@ -3,7 +3,7 @@
 # Savenode Masternode Setup Guide (Ubuntu 16.04)
 ***
 ## Required
-1) **16000 SNO coins**
+1) **32000 SNO coins**
 2) **Local Wallet https://github.com/savenode/SaveNodeCore/releases**
 3) **VPS with UBUNTU 16.04**
 4) **Putty https://www.putty.org/**
@@ -11,7 +11,7 @@
 ***
 
 ***On your Local Wallet***
-* Create an address with a label MN1 and send exactly 16000 SNO to it. Wait to complete 6 confirmations on “ Payment to yourself “ created.
+* Create an address with a label MN1 and send exactly 32000 SNO to it. Wait to complete 6 confirmations on “ Payment to yourself “ created.
 
 * Open the Debug Console ( Tools – Debug Console ) and type ***masternode genkey***.
 You will then receive your private key, save it in a txt to use it later.
