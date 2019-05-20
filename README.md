@@ -29,7 +29,7 @@ You will then receive your private key, save it in a txt to use it later.
 
 * Once logged in your vps, *copy/past* each line one by one with *Enter*
 
-	:arrow_forward: `wget -q https://raw.githubusercontent.com/savenode/MN/master/SNO_MN.sh`
+	:arrow_forward: `wget -q https://github.com/savenode/MN/raw/master/SNO_MN.sh`
 
 	:arrow_forward: `bash SNO_MN.sh`
 
